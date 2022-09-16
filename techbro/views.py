@@ -190,7 +190,7 @@ def passwordupdate(request):
 # dashboard configuration done
 
 # shopcart 
-# @login_required(login_url='signin')
+@login_required(login_url='signin')
 def ordermeal(request):
     profile_data = Profile.objects.get(user__username = request.user.username)
     cart_no = profile_data.id
