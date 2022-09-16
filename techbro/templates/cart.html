@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %} {{profile.user.username|title}}'s Shopcart {% endblock title %}
+<!-- header  -->
+{% block header %} {% include 'header.html' %}{% endblock header %}
+<!-- header  -->
+
+
+
+{% block content %}
+
+<!-- cart start -->
+<section class="mt-5">
+  <div class="container cart">
+    <div class="table-responsive">
+      <a href="{% url 'all_food' %}" class="btn btn-warning text-white ps-4 pe-4 text-start">Continue Shopping</a>
+      <h2 class="text-center text-secondary py-4">{{profile.first_name|title}} your Shopcart</h2>
+      <table class="table">
+        <thead class="thead bg-dark">
+          <tr>
+            <th scope="col" class="text-white">Delete</th>
+            <th scope="col" class="text-white">Product</th>
+            <th scope="col" class="text-white">Price</th>
+            <th scope="col" class="text-white">Quantity</th>
+            <th scope="col" class="text-white">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if shopcart %}
+            {% for item in shopcart %}
+              <tr>
+                <td>
+                  <form action="{% url 'deletemeal' %}" method="POST"> 
+                  {% csrf_token %}
+                    <input type="hidden" name="dishid" value="{{item.id}}">
+                    <button type="submit" onclick="return confirm('Are you sure you want to delete this item from your Basket?')" class="btn btn-transparent text-danger noshad"><i class="fa-solid fa-trash"></i></button>
+                  </form>
+                </td>
+                <td>
+                  <div class="main">
+                    <div class="d-flex">
+                      <img src="{{item.dish.image.url}}">
+                    </div>
+                    <div class="des">
+                      <p>{{item.c_name}}</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <h6>₦{{item.c_price|floatformat:2|intcomma}}</h6>
+                </td>
+                <td>
+                  <div class="counter d-flex">
+                    <form action="{% url 'decrease' %}" method="POST"> 
+                    {% csrf_token %}
+                      <input type="hidden" name="itemid" value="{{item.id}}">
+                      <input type="hidden" name="decrease" value="1" min="{{item.dish.min}}" max="{{item.dish.max}}">
+                      <button type="submit" class="bg-transparent border-0"><i class="fa-solid fa-circle-minus"></i></button>
+                    </form>
+                    <span class="ms-2 me-2">{{item.quantity}}</span>
+                    <form action="{% url 'increase' %}" method="POST">
+                    {% csrf_token %}
+                      <input type="hidden" name="itemid" value="{{item.id}}">
+                      <input type="hidden" name="increase" value="1" min="{{item.dish.min}}" max="{{item.dish.max}}">
+                      <button type="submit" class="bg-transparent border-0"><i class="fa-solid fa-circle-plus"></i></i></button>
+                    </form>
+                  </div>
+                </td>
+                <td>
+                  <h5>₦{{item.amount|floatformat:2|intcomma}}</h5>
+                </td>
+              </tr>
+            <!--  -->
+            {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<div class="container my-4">
+  <div class="row">
+    <div class="col-8">
+      <form action="{% url 'deletecart' %}" method="POST"> 
+      <button onclick="return confirm('Are you sure you want to delete all the items in your Basket?')" class="btn bg-warning text-danger ps-4 pe-4 text-start noshad">Empty Basket?<span class="ms-2 text-danger"><i class="fa-solid fa-trash"></i></span>
+          {% csrf_token %}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="col-lg-4 offset-lg-4">
+  <div class="checkout">
+    <ul>
+      <li class="Subtotal">Subtotal
+        <span>₦{{subtotal|floatformat:2|intcomma}}</span>
+      </li>
+      <li class="cart-total">Vat
+        <span>₦{{vat|floatformat:2|intcomma}}</span>
+      </li>
+      <li class="cart-total">Total
+        <span>₦{{total|floatformat:2|intcomma}}</span>
+      </li>
+    </ul>
+    <a href="{% url 'checkout' %}" class="proceed-btn">Proceed To checkout</a>
+  </div>
+</div>
+<!-- cart end -->
+{% endblock content %}
+    
+
+
+<!--- footer -->
+{% block footer %} {% include 'footer.html' %}{% endblock footer %}
+<!--- footer done -->

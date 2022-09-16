@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block title %} {{profile.user.username|title}}'s Shopcart {% endblock title %}
+<!-- header  -->
+{% block header %} {% include 'header.html' %}{% endblock header %}
+<!-- header  -->
+
+
+
+{% block content %}
+
+<!-- cart start -->
+<section class="mt-5">
+  <div class="container cart">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="row justify-content-center">
+          <div class="col-2"></div>
+          <div class="col-7">
+            <div class="card border-0 shadow shadow-warning p-5 bg-warning text-white">
+              <div class="card-body text-start">
+                <h5 class="card-title">Dear {{profile.first_name|title}}, your transaction is successful!</h5>
+                <h6 class="card-text">Your order will delivered in 1hour.</h6>
+                <p class="card-text">Thank you for your patronage.</p>
+              </div>
+             </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- cart end -->
+{% endblock content %}
+    
+
+
+<!--- footer -->
+{% block footer %} {% include 'footer.html' %}{% endblock footer %}
+<!--- footer done -->
