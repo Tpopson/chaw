@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-y*av3dw26&gp=3dmpyz5s@r1uj!_&mazj!13salk!*5vh^i4%p
 DEBUG = False
 # DEBUG = True
 
-ALLOWED_HOSTS = ['52.3.143.87']
+ALLOWED_HOSTS = ['34.254.226.172']
 # ALLOWED_HOSTS = []
 
 
@@ -88,7 +88,16 @@ DATABASES = {
     }
 }
 
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'chawdb',
+#         'USER': 'chawadmin',
+#         'PASSWORD': 'admin1234',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -156,19 +165,19 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Refill",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "img/avatar.jpg",
+    "site_logo": "img/favicon-96x96.png",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": "img/avatar.jpg",
+    "login_logo": "img/favicon-96x96.png",
 
     # Logo to use for login form in dark themes (defaults to login_logo)
-    "login_logo_dark": "img/avatar.jpg",
+    "login_logo_dark": "img/favicon-96x96.png",
 
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
 
     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": "img/avatar.jpg",
+    "site_icon": "img/favicon-96x96.png",
 
     # Welcome text on the login screen
     "welcome_sign": "Welcome To Refill Admin site",
@@ -176,8 +185,8 @@ JAZZMIN_SETTINGS = {
     # Copyright on the footer
     "copyright": "Refill Ltd",
 
-    "user_avatar": "img/avatar.jpg",
+    "user_avatar": "img/favicon-96x96.png",
 }#pip install -U django-jazzmin 
 
 
-# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
