@@ -13,7 +13,6 @@ from django.contrib import messages
 
 # password reset modules 
 from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
@@ -62,7 +61,8 @@ def password_reset_request(request):
 					email_template_name = "password/password_reset_email.txt"
 					c = {
 					"email":user.email,
-					'domain':'127.0.0.1:8000',
+					'domain':'54.171.151.100',
+					# 'domain':'127.0.0.1:8000',
 					'site_name': 'Refill',
 					"uid": urlsafe_base64_encode(force_bytes(user.pk)),
 					"user": user,
@@ -387,7 +387,7 @@ def payment(request):
     if request.method == 'POST':#integrate API
         api_key = 'sk_test_0c3bb25f14513ee95dcbe057e8b007f8b8480aa1'
         curl = 'https://api.paystack.co/transaction/initialize'
-        cburl = 'http://3.252.122.96/completed'
+        cburl = 'http://54.171.151.100/completed'
         # cburl = 'http://localhost:8000/completed'
         ref_code = str(uuid.uuid4())
         user = User.objects.get(username = request.user.username)

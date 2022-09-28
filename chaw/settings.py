@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-y*av3dw26&gp=3dmpyz5s@r1uj!_&mazj!13salk!*5vh^i4%p
 DEBUG = False
 # DEBUG = True
 
-ALLOWED_HOSTS = ['3.252.122.96']
+ALLOWED_HOSTS = ['54.171.151.100']
 # ALLOWED_HOSTS = []
 
 
@@ -81,23 +81,23 @@ WSGI_APPLICATION = 'chaw.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'chawdb',
-#         'USER': 'chawadmin',
-#         'PASSWORD': 'admin1234',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'chawdb',
+        'USER': 'chawadmin',
+        'PASSWORD': 'admin1234',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -153,6 +153,13 @@ EMAIL_HOST_USER = 'tpro1216@gmail.com'
 EMAIL_HOST_PASSWORD = 'hbitlgergmwmdqrl'
 EMAIL_USE_TLS = True
 # email settings done
+
+
+
+
+
+
+
 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
